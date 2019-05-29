@@ -2,16 +2,15 @@
 	"manifest_version": 2,
 	"name": "sYmon Helper",
 	"version": "0.8",
-	"description": "this extension helps with boilerplate Help Desk taks",
-	"permissions": ["storage"],
+	"description": "This extension automatically writes a generic ticket opened email response.",
 	"icons": {
-		"128": "sy128.png",
-		"48": "sy48.png",
-		"16": "sy16.png"
+		"128": "icos/sy128.png",
+		"48": "icos/sy48.png",
+		"16": "icos/sy16.png"
 	},
 	"content_scripts": [
 		{
-		"matches": ["<all_urls>"],
+		"matches": ["https://hfhs.service-now.com/incident.do*"],
 		"js": ["jquery-331.slim.js","content.js"]
 		}
 	],
@@ -19,7 +18,18 @@
 		"default_icon": "sy16.png",
 		"default_title": "SyMon"
 	},
+	"author": "Y0h",
+	"commands": {
+		"_execute_browser_action": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+E",
+				"mac": "MacCtrl+Shift+E"
+			},
+			"description": "creates the letter and copies to clipboard"
+		}
+	},
 	"background": {
-		"scripts": ["background.js"]
+		"scripts": ["background.js"],
+		"persistent": false
 	}
 }
